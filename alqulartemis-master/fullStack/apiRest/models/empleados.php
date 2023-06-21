@@ -60,6 +60,17 @@ class Empleado extends Conectar{
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function update_Empleado($Empleado_ID, $Nombre_Empleado, $Telefono_Empleado){
+        $conectar = parent::Conexion();
+        parent::set_name();
+        $stm = $conectar->prepare("UPDATE Empleado SET Nombre_Empleado=?, Telefono_Empleado=? WHERE Empleado_ID=?");
+        $stm->bindValue(1, $Nombre_Empleado);
+        $stm->bindValue(2, $Telefono_Empleado);
+        $stm->bindValue(3, $Empleado_ID);
+        $stm->execute();
+    }
+
+
     
 
 }

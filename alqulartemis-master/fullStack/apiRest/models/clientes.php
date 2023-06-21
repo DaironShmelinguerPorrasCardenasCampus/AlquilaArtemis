@@ -62,7 +62,7 @@ class Cliente extends Conectar{
     public function update_Cliente($Cliente_ID, $Nombre_Cliente, $Telefono_Cliente){
         $conectar = parent::Conexion();
         parent::set_name();
-        $stm = $conectar->prepare("UPDATE Alquiler_Detalle SET Nombre_Cliente=?, Telefono_Cliente=? WHERE Cliente_ID=?");
+        $stm = $conectar->prepare("UPDATE Cliente SET Nombre_Cliente=?, Telefono_Cliente=? WHERE Cliente_ID=?");
         $stm->bindValue(1, $Nombre_Cliente);
         $stm->bindValue(2, $Telefono_Cliente);
         $stm->bindValue(3, $Cliente_ID);
