@@ -69,21 +69,16 @@ class Productos extends Conectar{
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update_Productos($Productos_ID, $Nombre_Productos, $Productos_ID, $Obra_ID, $Empleado_ID, $Cantidad_Salida, $Cantidad_Propia, $Cantidad_Subalquilada, $ValorUnida, $Fecha_StanBye, $Estado){
+    public function update_Productos($Productos_ID, $Nombre_Productos, $Descripcion, $Precio, $Stock, $Categoria, $Cantidad_Propia, $Cantidad_Subalquilada, $ValorUnida, $Fecha_StanBye, $Estado){
         $conectar = parent::Conexion();
         parent::set_name();
-        $stm = $conectar->prepare("UPDATE Alquiler_Detalle SET Nombre_Productos=?, Productos_ID=?, Obra_ID=?, Empleado_ID=?, Cantidad_Salida=?, Cantidad_Propia=?, Cantidad_Subalquilada=?, ValorUnida = ?, Fecha_StanBye = ?, Estado = ? WHERE Productos_ID=?");
+        $stm = $conectar->prepare("UPDATE Productos SET Nombre_Productos=?, Descripcion=?, Precio=?, Stock=?, Categoria=? WHERE Productos_ID=?");
         $stm->bindValue(1, $Nombre_Productos);
-        $stm->bindValue(2, $Productos_ID);
-        $stm->bindValue(3, $Obra_ID);
-        $stm->bindValue(4, $Empleado_ID);
-        $stm->bindValue(5, $Cantidad_Salida);
-        $stm->bindValue(6, $Cantidad_Propia);
-        $stm->bindValue(7, $Cantidad_Subalquilada);
-        $stm->bindValue(8, $ValorUnida);
-        $stm->bindValue(9, $Fecha_StanBye);
-        $stm->bindValue(10, $Estado);
-        $stm->bindValue(11, $Productos_ID);
+        $stm->bindValue(2, $Descripcion);
+        $stm->bindValue(3, $Precio);
+        $stm->bindValue(4, $Stock);
+        $stm->bindValue(5, $Categoria);
+        $stm->bindValue(6, $Productos_ID);
         $stm->execute();
     }
 

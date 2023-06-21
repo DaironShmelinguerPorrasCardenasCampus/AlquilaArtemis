@@ -60,6 +60,15 @@ class Obras extends Conectar{
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function update_Obra($Obras_ID, $Cliente_ID, $Nombre_Obra){
+        $conectar = parent::Conexion();
+        parent::set_name();
+        $stm = $conectar->prepare("UPDATE Obra SET Cliente_ID=?, Nombre_Obra=? WHERE Obras_ID=?");
+        $stm->bindValue(1, $Cliente_ID);
+        $stm->bindValue(2, $Nombre_Obra);
+        $stm->bindValue(3, $Obras_ID);
+        $stm->execute();
+    }
     
 
 }

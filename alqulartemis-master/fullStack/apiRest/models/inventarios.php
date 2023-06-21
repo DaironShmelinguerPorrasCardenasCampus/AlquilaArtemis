@@ -74,6 +74,23 @@ class Inventario extends Conectar{
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function update_Invetario($Alquiler_Detalle_ID, $Alquiler_ID, $Productos_ID, $Obra_ID, $Empleado_ID, $Cantidad_Salida, $Cantidad_Propia, $Cantidad_Subalquilada, $ValorUnida, $Fecha_StanBye, $Estado){
+        $conectar = parent::Conexion();
+        parent::set_name();
+        $stm = $conectar->prepare("UPDATE Alquiler_Detalle SET Alquiler_ID=?, Productos_ID=?, Obra_ID=?, Empleado_ID=?, Cantidad_Salida=?, Cantidad_Propia=?, Cantidad_Subalquilada=?, ValorUnida = ?, Fecha_StanBye = ?, Estado = ? WHERE Alquiler_Detalle_ID=?");
+        $stm->bindValue(1, $Alquiler_ID);
+        $stm->bindValue(2, $Productos_ID);
+        $stm->bindValue(3, $Obra_ID);
+        $stm->bindValue(4, $Empleado_ID);
+        $stm->bindValue(5, $Cantidad_Salida);
+        $stm->bindValue(6, $Cantidad_Propia);
+        $stm->bindValue(7, $Cantidad_Subalquilada);
+        $stm->bindValue(8, $ValorUnida);
+        $stm->bindValue(9, $Fecha_StanBye);
+        $stm->bindValue(10, $Estado);
+        $stm->bindValue(11, $Alquiler_Detalle_ID);
+        $stm->execute();
+    }
 
     
 
